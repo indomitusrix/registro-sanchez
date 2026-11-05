@@ -179,6 +179,35 @@ strong{color:#111111;font-weight:700}
 .hl{color:#1a3a5c;font-weight:700}
 .aviso-legal-alt{background:#f5f8ff;border:1px solid #c0d0e0;border-left:4px solid #1a3a5c;padding:22px 30px}
 
+/* ACORDEÓN */
+.section-block{padding:0;border-bottom:1px solid #e0e0e0;overflow:hidden}
+.acc-trigger{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;align-items:flex-start;gap:20px;
+  padding:40px 0 36px;text-align:left;
+  transition:background .15s;
+}
+.acc-trigger:hover{background:#fafafa}
+.acc-trigger:hover .acc-arrow{color:#111111}
+.acc-arrow{
+  font-family:Arial,sans-serif;font-size:20px;color:#bbbbbb;
+  flex-shrink:0;margin-top:2px;line-height:1;
+  transition:transform .3s ease, color .2s;
+  align-self:center;
+}
+.acc-trigger[aria-expanded="true"] .acc-arrow{transform:rotate(90deg);color:#111111}
+.acc-summary{
+  font-family:'Source Serif 4',serif;font-size:14px;color:#888888;
+  line-height:1.55;margin-top:7px;font-style:italic;
+}
+.acc-body{
+  display:none;padding:0 0 48px 0;
+}
+.acc-body.open{display:block}
+/* override viejo padding del section-header dentro del acordeón */
+.acc-trigger .section-header{margin-bottom:0;width:100%}
+.acc-trigger .section-title-wrap{flex:1}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .page-wrapper{padding:0 16px}
@@ -194,6 +223,7 @@ strong{color:#111111;font-weight:700}
   nav a{padding:12px 10px;font-size:10px}
   .verdict{padding:36px 24px}
   .stat-big{font-size:38px}
+  .acc-trigger{padding:28px 0 24px}
 }
 </style>
 </head>
@@ -337,7 +367,8 @@ strong{color:#111111;font-weight:700}
 
   <!-- I. PROMESAS ROTAS -->
   <section id="promesas" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-promesas">
+      <div class="section-header">
       <div class="section-num">I</div>
       <div class="section-title-wrap">
         <span class="section-tag">Contradicciones documentadas</span>
@@ -345,8 +376,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <p style="color:#6b6866; max-width:700px; margin-bottom:30px;">Lo que sigue no es interpretación política. Son citas textuales contrastadas con hechos posteriores verificables y documentados en fuentes públicas.</p>
+        <div class="acc-summary">Las promesas explícitas de Sánchez antes y después de llegar al poder — y lo que realmente ocurrió.</div>
+    </button>
+    <div class="acc-body" id="body-promesas">
+      <p style="color:#6b6866; max-width:700px; margin-bottom:30px;">Lo que sigue no es interpretación política. Son citas textuales contrastadas con hechos posteriores verificables y documentados en fuentes públicas.</p>
 
     <div class="promise-pair fade-in">
       <div class="promise-box said">
@@ -407,11 +440,13 @@ strong{color:#111111;font-weight:700}
       <p>"El mecanismo es siempre el mismo: declaración categórica antes de las elecciones, silencio en la transición, hecho consumado después. Y luego acusar de 'bulo' a quien recuerda la declaración original."</p>
       <cite>— Patrón recurrente documentado por analistas políticos, 2018–2026</cite>
     </div>
+    </div>
   </section>
 
   <!-- II. ESCÁNDALOS -->
   <section id="escandalos" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-escandalos">
+      <div class="section-header">
       <div class="section-num">II</div>
       <div class="section-title-wrap">
         <span class="section-tag">Procedimientos judiciales en curso · Estado procesal actualizado</span>
@@ -419,8 +454,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="cards-grid">
+        <div class="acc-summary">Los principales procedimientos judiciales abiertos contra el entorno del Gobierno: Koldo, Ábalos, Begoña Gómez y más.</div>
+    </button>
+    <div class="acc-body" id="body-escandalos">
+      <div class="cards-grid">
 
       <div class="card featured fade-in">
         <div class="card-accent"></div>
@@ -551,11 +588,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">Según The Objective, más de 1.940 millones de euros en fondos públicos figuran en los sumarios judiciales vinculados al entorno del Gobierno. Las acusaciones fiscales acumuladas para todos los investigados superarían los 400 años de pena solicitada. <strong>Estas son las peticiones de las acusaciones, no condenas.</strong> La resolución final corresponde en cada caso al tribunal competente mediante sentencia motivada.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- II-B. ZAPATERO Y VENEZUELA -->
   <section id="zapatero-venezuela" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-zapatero-venezuela">
+      <div class="section-header">
       <div class="section-num" style="font-size:9px; letter-spacing:0.1em;">II-B</div>
       <div class="section-title-wrap">
         <span class="section-tag">Hechos documentados · Investigaciones en curso · Presunción de inocencia plena</span>
@@ -563,8 +602,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="alert-box fade-in" style="background:#2a1a06; border-color:#b8860b; margin-bottom:30px;">
+        <div class="acc-summary">El papel de Zapatero como intermediario no oficial del régimen venezolano y sus implicaciones para España.</div>
+    </button>
+    <div class="acc-body" id="body-zapatero-venezuela">
+      <div class="alert-box fade-in" style="background:#2a1a06; border-color:#b8860b; margin-bottom:30px;">
       <div class="alert-icon">📋</div>
       <div>
         <div class="alert-title" style="color:#f0d080;">Nota metodológica previa</div>
@@ -632,12 +673,13 @@ strong{color:#111111;font-weight:700}
       <p>"Realizo con mi actividad privada una prestación de servicios, creo que es un derecho, solo faltaría. Mis labores son conformes a la legalidad y tienen cero relación con Plus Ultra."</p>
       <cite>— José Luis Rodríguez Zapatero · declaraciones ante medios, febrero 2026. <em>Su posición oficial; la Audiencia Nacional instruye la causa bajo secreto de sumario.</em></cite>
     </div>
-
+    </div>
   </section>
 
   <!-- II-C. MEDIOS DE COMUNICACIÓN -->
   <section id="medios" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-medios">
+      <div class="section-header">
       <div class="section-num" style="font-size:9px; letter-spacing:0.1em;">II-C</div>
       <div class="section-title-wrap">
         <span class="section-tag">Medios públicos y privados · Publicidad institucional · Datos oficiales BOE y OIReScon</span>
@@ -645,8 +687,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">La relación del Gobierno con los medios de comunicación, RTVE y la financiación pública de la prensa afín.</div>
+    </button>
+    <div class="acc-body" id="body-medios">
+      <div class="two-col fade-in">
       <p>La relación entre un Gobierno y los medios de comunicación se mide, entre otras cosas, en euros. El Gobierno de Sánchez ha alcanzado en publicidad institucional y subvenciones directas a medios los niveles más altos de los últimos veinte años. En 2025, la publicidad institucional del Estado ascendió a <strong>161,2 millones de euros</strong> —la cifra más alta desde los gobiernos de Zapatero en 2007–2008— repartida en 146 campañas. Los cinco últimos años suman <strong>727 millones de euros</strong> en publicidad institucional. A ello se añaden 124,5 millones de euros en ayudas directas a medios aprobadas en diciembre de 2024, y los más de 200 millones anuales en publicidad de empresas públicas del Estado, cuyo desglose no se hace público.</p>
       <p>La propia Administración no publica el detalle de a qué medios concretos va la publicidad del Estado central. El Gobierno de Sánchez anunció en julio de 2024 que modificaría la ley de publicidad institucional para "limitar la financiación pública de medios que difunden bulos" —en referencia a medios críticos con su gestión, según la oposición—, generando una amplia polémica sobre si el criterio de asignación de dinero público respondería a consideraciones políticas.</p>
     </div>
@@ -728,6 +772,7 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">Es importante señalar que la politización de RTVE es un problema estructural que afecta a todos los gobiernos desde su fundación. Los "viernes negros" de los trabajadores protestando contra la manipulación informativa ocurrieron también bajo el Gobierno de Rajoy (2011–2018). Este archivo documenta los hechos del período 2018–2026 sin ignorar que el problema tiene raíces anteriores. Lo que es específico de este período es: el volumen de publicidad institucional alcanzado, el decreto que modificó el sistema de elección del Consejo, y los comunicados formales del propio Consejo de Informativos sobre falta de neutralidad en programas concretos.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- STAT BAND -->
@@ -754,7 +799,8 @@ strong{color:#111111;font-weight:700}
 
   <!-- III. SALARIOS E IRPF -->
   <section id="salarios" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-salarios">
+      <div class="section-header">
       <div class="section-num">III</div>
       <div class="section-title-wrap">
         <span class="section-tag">Economía Real · Datos OCDE, INE, Instituto Juan de Mariana · Periodo Sánchez 2018–2026</span>
@@ -762,8 +808,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <!-- STAT DESTACADO PERIODO SÁNCHEZ -->
+        <div class="acc-summary">Evolución del poder adquisitivo real, la presión fiscal récord y la sobrerecaudación del IRPF.</div>
+    </button>
+    <div class="acc-body" id="body-salarios">
+      <!-- STAT DESTACADO PERIODO SÁNCHEZ -->
     <div class="cards-grid fade-in" style="margin-bottom:36px;">
       <div class="card featured">
         <div class="card-accent"></div>
@@ -832,11 +880,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">España ha pasado de una presión fiscal del 34% del PIB en 2018 al 38,3% estimado para 2026. Es el máximo histórico de la democracia española. El Estado recaudó en 2025 un total de 325.000 millones de euros —prácticamente el PIB de Cataluña en un año— gracias en gran parte a no deflactar. Los tramos del IRPF siguen sin moverse. Y el Gobierno lo llama "redistribución".</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- IV. EMPLEO REAL -->
   <section id="empleo" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-empleo">
+      <div class="section-header">
       <div class="section-num">IV</div>
       <div class="section-title-wrap">
         <span class="section-tag">Mercado Laboral · Datos Fedea, USO, INE</span>
@@ -844,8 +894,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">Las cifras reales de desempleo, contratos temporales y la brecha entre la estadística oficial y la realidad laboral.</div>
+    </button>
+    <div class="acc-body" id="body-empleo">
+      <div class="two-col fade-in">
       <p>El Gobierno de Sánchez ha construido su relato económico sobre un pilar: la creación de empleo. Pero la reforma laboral de Yolanda Díaz no creó empleo estable. Creó un nuevo tipo de contrato —el <strong>fijo discontinuo</strong>— que comparte las características del empleo temporal sin aparecer como desempleo en las estadísticas.</p>
       <p>Los fijos discontinuos alternan periodos de actividad con temporadas sin empleo, sin salario y sin cotizar. Pero cuando se inscriben en el SEPE durante su inactividad, no cuentan como parados: cuentan como "demandantes con relación laboral". Un eufemismo estadístico de enorme rentabilidad política.</p>
       <p>El resultado: el paro registrado oficial se ha reducido en 600.000 personas entre 2019 y 2024. Pero el paro efectivo —el que suma a los fijos discontinuos inactivos— solo ha bajado en <strong>70.000 personas</strong>. Según Fedea, institución de referencia en análisis laboral.</p>
@@ -899,11 +951,13 @@ strong{color:#111111;font-weight:700}
       <p>"Los fijos discontinuos que no trabajan no cuentan como parados porque tienen contrato. Es la alquimia estadística más lucrativa de la historia reciente del mercado laboral español."</p>
       <cite>— Análisis Fedea · Fundación de Estudios de Economía Aplicada, 2025</cite>
     </div>
+    </div>
   </section>
 
   <!-- V. EL APAGÓN -->
   <section id="apagon" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-apagon">
+      <div class="section-header">
       <div class="section-num">V</div>
       <div class="section-title-wrap">
         <span class="section-tag">28 de abril de 2025 · El peor apagón en Europa en 20 años</span>
@@ -911,8 +965,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">El apagón eléctrico de 2025: causas, gestión de la crisis y responsabilidades pendientes de determinar.</div>
+    </button>
+    <div class="acc-body" id="body-apagon">
+      <div class="two-col fade-in">
       <p>El 28 de abril de 2025, a las 12:33 horas, la España peninsular sufrió el primer "cero eléctrico" de su historia. La interrupción dejó sin electricidad a más de 50 millones de personas en España, Portugal y Andorra. Fue el incidente eléctrico más grave en Europa desde hace más de 20 años.</p>
       <p>La causa técnica confirmada por el informe europeo de ENTSO-E fue un <strong>aumento rápido e incontrolado de la tensión</strong> que desencadenó una cascada de desconexiones. Lo que los informes no resuelven —y lo que el Gobierno intenta evitar que se ventile— es por qué los planes de defensa del sistema no pudieron evitarlo.</p>
       <p>Las eléctricas documentaron problemas de tensión ya los días 16, 22 y 24 de abril. Endesa envió una carta formal a Red Eléctrica pidiendo una convocatoria de análisis. La respuesta: "No lo consideramos necesario". Cuatro días después, el apagón.</p>
@@ -939,11 +995,13 @@ strong{color:#111111;font-weight:700}
         <p class="card-body">El modelo energético de Sánchez apostó por maximizar la producción renovable sin inversión paralela en almacenamiento ni en capacidad de gestión de tensión. La misma operadora del sistema lo advertía en sus informes. El Gobierno ignoró las advertencias técnicas.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- VI. ADAMUZ -->
   <section id="adamuz" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-adamuz">
+      <div class="section-header">
       <div class="section-num">VI</div>
       <div class="section-title-wrap">
         <span class="section-tag">18 de enero de 2026 · Córdoba &nbsp;|&nbsp; 28 de octubre de 2026 · Toledo</span>
@@ -951,8 +1009,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <h3 class="subhead">Adamuz (Córdoba) — 18 enero 2026 · 46 muertos</h3>
+        <div class="acc-summary">Dos catástrofes ferroviarias en nueve meses: 46 muertos en Adamuz (enero) y 69 muertos en Urda (octubre) de 2026.</div>
+    </button>
+    <div class="acc-body" id="body-adamuz">
+      <h3 class="subhead">Adamuz (Córdoba) — 18 enero 2026 · 46 muertos</h3>
 
     <div class="two-col fade-in">
       <p>El 18 de enero de 2026, un tren de alta velocidad de Iryo descarriló en Adamuz (Córdoba) e invadió la vía contraria, colisionando frontalmente con un Alvia de Renfe. <strong>46 personas murieron</strong>. Fue el accidente ferroviario más grave del siglo XXI en España, solo superado por el de Santiago de Compostela en 2013.</p>
@@ -984,11 +1044,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">La causa del accidente de Urda está siendo investigada. <strong>Las causas técnicas y las responsabilidades penales no han sido determinadas judicialmente.</strong> La meteorología ha sido descartada como factor. La investigación se centra en el sistema de control de circulación. Ningún imputado formal hasta la fecha en este procedimiento.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- VII. PACTOS SECESIONISTAS -->
   <section id="pactos-secesionistas" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-pactos-secesionistas">
+      <div class="section-header">
       <div class="section-num">VII</div>
       <div class="section-title-wrap">
         <span class="section-tag">Cesiones al separatismo · Documentadas en el BOE y acuerdos públicos</span>
@@ -996,8 +1058,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">Las cesiones institucionales a Junts, ERC y Bildu a cambio de apoyo parlamentario, documentadas en el BOE.</div>
+    </button>
+    <div class="acc-body" id="body-pactos-secesionistas">
+      <div class="two-col fade-in">
       <p>Para mantenerse en el poder sin mayoría parlamentaria suficiente, Sánchez ha convertido las instituciones del Estado en moneda de cambio. El precio lo han fijado partidos cuyo objetivo declarado es la ruptura de España: Junts, ERC y EH Bildu. El Consejo General del Poder Judicial —el órgano de gobierno de los jueces— comunicó formalmente a la Comisión Europea que los pactos de investidura de 2023 representaban "<strong>la abolición del Estado de derecho en España y un ataque a la independencia judicial y a la división de poderes</strong>".</p>
       <p>Lo que sigue es la lista de lo cedido, documentado en el BOE o en acuerdos firmados y publicados por las propias partes. No es una lista de promesas: es una lista de hechos consumados o en proceso de consumación.</p>
     </div>
@@ -1083,11 +1147,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">El Consejo General del Poder Judicial —presidido entonces por magistrados del Supremo— comunicó formalmente a la presidenta de la Comisión Europea, Ursula von der Leyen, que los pactos de Sánchez con el independentismo "suponen la abolición del Estado de derecho en España y un ataque a la independencia judicial y a la división de poderes". Es la primera vez en la historia democrática española que el órgano de gobierno de los jueces recurre a las instituciones europeas por las actuaciones de un Gobierno.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- VIII. GUARDIA CIVIL Y NARCOS -->
   <section id="narcos" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-narcos">
+      <div class="section-header">
       <div class="section-num">VIII</div>
       <div class="section-title-wrap">
         <span class="section-tag">Seguridad Interior · Datos Jucil, AUGC y resoluciones parlamentarias</span>
@@ -1095,8 +1161,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">El narco en el Estrecho y el Guadalquivir, y la desprotección operativa de la Guardia Civil.</div>
+    </button>
+    <div class="acc-body" id="body-narcos">
+      <div class="two-col fade-in">
       <p>El 9 de febrero de 2024, dos agentes de la Guardia Civil —David Pérez Carracedo y Miguel Ángel González Gómez— fueron asesinados en el puerto de Barbate (Cádiz) cuando una narcolancha los embistió deliberadamente. El análisis pericial posterior concluyó que la embarcación "adoptó rumbo directo hacia la patrullera oficial, sin maniobra evasiva apreciable". Los mató con intención. El piloto, Karim El Baqqali, de 32 años y nacionalidad marroquí, se entregó meses después.</p>
       <p>El crimen desencadenó una ola de indignación nacional. Las asociaciones de guardias civiles señalaron inmediatamente al mismo responsable: el ministro del Interior, Fernando Grande-Marlaska, quien en 2022 había tomado una decisión que los agentes llevaban meses denunciando como suicida: <strong>disolver el OCON Sur</strong>, la unidad de élite antidroga que era la pesadilla de los cárteles del Estrecho.</p>
     </div>
@@ -1151,11 +1219,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">El PP andaluz presentó en noviembre de 2025 una proposición en el Parlamento exigiendo la "reprobación" de Marlaska por "abandono institucional" ante el narcotráfico. La iniciativa pide la recuperación de unidades especializadas como el OCON Sur, más efectivos, medios tecnológicos y cambios en el Código Penal para perseguir a los "petaqueros" —abastecedores de combustible de las narcolanchas— que operan actualmente con total impunidad. En 2025, la Guardia Civil localizó además el primer narcotúnel que conectaba Ceuta con Marruecos.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- IX. MARRUECOS Y PEGASUS -->
   <section id="marruecos" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-marruecos">
+      <div class="section-header">
       <div class="section-num">IX</div>
       <div class="section-title-wrap">
         <span class="section-tag">Política Exterior · Caso Pegasus · Espionaje de Estado</span>
@@ -1163,8 +1233,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">La subordinación de la política exterior española a las demandas de Rabat tras el espionaje con Pegasus.</div>
+    </button>
+    <div class="acc-body" id="body-marruecos">
+      <div class="two-col fade-in">
       <p>En mayo de 2021, el teléfono móvil de Pedro Sánchez fue infectado en al menos dos ocasiones con el programa de ciberespionaje Pegasus, desarrollado por la empresa israelí NSO Group. El análisis técnico del Centro Criptológico Nacional —organismo de inteligencia dependiente del CNI— concluyó que se habían extraído <strong>2,6 GB y 130 MB de datos</strong> del terminal del presidente. También fueron infectados los teléfonos del ministro del Interior Grande-Marlaska (con 6,8 gigabytes extraídos), la ministra de Defensa Margarita Robles y el ministro de Agricultura Luis Planas. Una comisión de la UE señaló a <strong>Marruecos como el autor</strong> del espionaje en mayo de 2023.</p>
       <p>El contenido de lo extraído nunca ha sido revelado públicamente. Pero lo que ocurrió a continuación permite deducir su peso. En enero de 2022, emisarios de Moncloa se reunieron con representantes marroquíes en Marrakech y Málaga, con mediación israelí. Marruecos se comprometió a no utilizar el material obtenido contra los intereses del Gobierno. España, a su vez, enterró la crisis. Dos meses después, en marzo de 2022, llegó el giro.</p>
     </div>
@@ -1219,11 +1291,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">Son hechos verificados: el espionaje con Pegasus (confirmado por el CNI), la señalización de Marruecos como autor por una comisión de la UE, las reuniones secretas en Marrakech y Málaga (documentadas por The Objective con fuentes de inteligencia), el giro sobre el Sáhara (carta publicada), y los 45.000 millones comprometidos. Es una hipótesis no probada judicialmente: que el contenido del espionaje fue utilizado para presionar a Sánchez. La coincidencia temporal y la secuencia de hechos la fundamentan; una prueba directa, no existe hasta la fecha.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- X. INMIGRACIÓN -->
   <section id="inmigracion" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-inmigracion">
+      <div class="section-header">
       <div class="section-num">X</div>
       <div class="section-title-wrap">
         <span class="section-tag">Datos oficiales del Ministerio del Interior e INE</span>
@@ -1231,8 +1305,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">La gestión de la inmigración irregular: cifras, menores no acompañados y la presión sobre los servicios sociales.</div>
+    </button>
+    <div class="acc-body" id="body-inmigracion">
+      <div class="two-col fade-in">
       <p>En 2024, las Islas Canarias registraron <strong>46.843 llegadas de inmigrantes irregulares</strong>, un 17,4% más que en 2023, desbordando las capacidades de acogida locales. Con 167.366 solicitudes de protección internacional, España se convirtió en el segundo país europeo tras Alemania, con el sistema operando al 99% de su capacidad.</p>
       <p>Los datos de criminalidad son complejos pero significativos. Aunque la tasa general de criminalidad en España bajó un 9% entre 2017 y 2024, los datos penitenciarios muestran una sobrerrepresentación documentada: los extranjeros representan el 11,5% de la población pero el 26% de los condenados. Per cápita, los extranjeros delinquen tres veces más que los españoles, según la ratio entre su proporción en la población y su proporción en condenas. En delitos sexuales, representan el 30% de los condenados.</p>
     </div>
@@ -1251,11 +1327,13 @@ strong{color:#111111;font-weight:700}
         <p class="card-body">La combinación de llegada masiva de nuevos residentes con la ausencia de política de vivienda ha disparado los precios del alquiler en las principales ciudades españolas. Los jóvenes españoles son los principales perjudicados de una política que prioriza el asentamiento de nuevos llegados sobre el acceso de los residentes históricos.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- XI. REGULARIZACIÓN -->
   <section id="regularizacion" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-regularizacion">
+      <div class="section-header">
       <div class="section-num">XI</div>
       <div class="section-title-wrap">
         <span class="section-tag">Decreto Ley · Abril 2026 · Sin Pasar por el Congreso</span>
@@ -1263,8 +1341,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">La regularización masiva de 1,2 millones de inmigrantes aprobada por decreto y su impacto electoral.</div>
+    </button>
+    <div class="acc-body" id="body-regularizacion">
+      <div class="two-col fade-in">
       <p>En abril de 2026, el Gobierno de Sánchez aprobó por <strong>decreto ley</strong> —sin pasar por el Congreso de los Diputados, que había rechazado la medida— la regularización masiva de inmigrantes irregulares. La cifra oficial reconocida: 500.000. La cifra de la Policía Nacional: entre <strong>750.000 y 1,2 millones</strong>. Con reagrupaciones familiares posteriores, los expertos elevan el número a entre 2 y 3 millones de personas.</p>
       <p>El Consejo de Estado —presidido por la exministra socialista Carmen Calvo— calificó el borrador de "graves carencias". La Unión Europea expresó reparos formales por el incumplimiento de los Pactos de Migración y Asilo. El Gobierno ignoró ambas advertencias. No se estableció ningún requisito laboral previo, a diferencia de todas las regularizaciones anteriores en la historia española.</p>
       <p>Para acreditar la estancia en España antes del 31 de diciembre de 2025, basta con cualquier documentación y una declaración responsable de no tener antecedentes penales, <strong>sin verificación real</strong>. España no tiene acuerdos de intercambio de información policial con decenas de países de origen. Una cláusula de "estado de necesidad", introducida a petición de Podemos, permite regularizar a personas con condenas previas.</p>
@@ -1307,11 +1387,13 @@ strong{color:#111111;font-weight:700}
       <p>"La regularización de 2026 no cambia el censo de 2027. Pero sí cambia el de 2031. Y el de 2035. Y el de todos los ciclos electorales que vienen después. Sánchez piensa en el largo plazo."</p>
       <cite>— Periodista Digital · Análisis electoral, abril 2026</cite>
     </div>
+    </div>
   </section>
 
   <!-- XII. BRECHA DE GÉNERO -->
   <section id="genero" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-genero">
+      <div class="section-header">
       <div class="section-num">XII</div>
       <div class="section-title-wrap">
         <span class="section-tag">Convivencia social · Datos CIS, Barómetro FAD Juventud, Ipsos</span>
@@ -1319,8 +1401,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">La brecha de género real frente a la narrativa oficial: datos de empleo, salarios y violencia doméstica.</div>
+    </button>
+    <div class="acc-body" id="body-genero">
+      <div class="two-col fade-in">
       <p>La violencia contra las mujeres es un problema real y grave que merece políticas serias, sostenidas y transversales. Nadie lo discute. Lo que sí se discute —y con razones fundadas— es si el enfoque ideológico del Gobierno de Sánchez ha contribuido a resolverlo o, por el contrario, ha <strong>polarizado a la sociedad española hasta crear una brecha generacional sin precedentes entre hombres y mujeres jóvenes</strong>, alimentando el resentimiento mutuo en lugar de construir consenso.</p>
       <p>El "Gobierno más feminista de la historia" —autodenominación de Sánchez— ha impulsado leyes que se presentaron como protección a las víctimas y que, en la práctica, tuvieron efectos contrarios a los declarados, frente a las que además el propio PSOE terminó enfrentado a su socio de Gobierno Podemos. Y en paralelo, ha convertido la división por género en un eje permanente del discurso político, con consecuencias medibles en la sociedad española.</p>
     </div>
@@ -1382,11 +1466,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">Mientras el Gobierno proclamaba ser el ejecutivo más feminista de España, en sus propias filas al menos una decena de mujeres denunciaron presunto acoso sexual contra el exdiputado Francisco Salazar y el expresidente de la Diputación de Lugo José Tomé. La coherencia entre el discurso y los hechos es el primer requisito de cualquier política creíble. Sin ella, solo queda la instrumentalización.</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- XIII. VIVIENDA -->
   <section id="vivienda" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-vivienda">
+      <div class="section-header">
       <div class="section-num">XIII</div>
       <div class="section-title-wrap">
         <span class="section-tag">Mercado inmobiliario · Datos Observatorio del Alquiler, Idealista, INE</span>
@@ -1394,8 +1480,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">El hundimiento del mercado de la vivienda: precio, alquiler y el fracaso de la Ley de Vivienda.</div>
+    </button>
+    <div class="acc-body" id="body-vivienda">
+      <div class="two-col fade-in">
       <p>España tiene uno de los mercados de vivienda más tensionados de Europa, y el Gobierno de Sánchez lo ha empeorado de forma sistemática con un triple error de consecuencias devastadoras: <strong>no generar oferta nueva</strong>, aplicar control de precios que ha expulsado a los propietarios del mercado, y proteger tanto al deudor y al okupa que ningún propietario racional quiere alquilar su vivienda.</p>
       <p>La Ley de Vivienda de 2023 —aprobada con el apoyo de Podemos, ERC y Bildu— es el manual de cómo no gestionar un mercado. El diagnóstico correcto era que faltaba oferta. La respuesta del Gobierno fue controlar los precios. El resultado era perfectamente predecible para cualquier economista: menos oferta, más precios y un mercado cronificado de escasez.</p>
     </div>
@@ -1445,11 +1533,13 @@ strong{color:#111111;font-weight:700}
         <p class="alert-text">El Gobierno prohíbe subir los precios del alquiler pero no genera oferta nueva. Protege al okupa pero no construye vivienda social. Habla del derecho a la vivienda mientras la vivienda se encarece. Anuncia ayudas al alquiler joven que acaban en manos de los propietarios en forma de subida de precio. La política de vivienda de Sánchez ha sido, en esencia, la combinación perfecta para garantizar que el problema empeore: más demanda, menos oferta, precios más altos y propietarios más reacios. Y todo con el envoltorio de "defender a los más vulnerables".</p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- XIV. CONTRATOS PÚBLICOS SIN CONTROL -->
   <section id="contratos" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-contratos">
+      <div class="section-header">
       <div class="section-num">XIV</div>
       <div class="section-title-wrap">
         <span class="section-tag">Gasto Público · Datos OIReScon · Ministerio de Hacienda</span>
@@ -1457,8 +1547,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">Los 36.700 millones de euros adjudicados a dedo en cinco años y la opacidad en la contratación pública.</div>
+    </button>
+    <div class="acc-body" id="body-contratos">
+      <div class="two-col fade-in">
       <p>El "contrato negociado sin publicidad" es el mecanismo más opaco de la contratación pública española: la Administración elige directamente a una empresa, negocia con ella las condiciones y el precio, y solo informa a posteriori. No hay convocatoria pública. No hay competencia. No hay posibilidad de que otras empresas presenten ofertas. Está previsto legalmente para casos excepcionales. Bajo Sánchez, lo excepcional se ha convertido en norma.</p>
       <p>Según datos de la Oficina Independiente de Regulación y Supervisión de la Contratación (OIReScon), dependiente del propio Ministerio de Hacienda, en 2023 el Gobierno triplicó de un año para otro los contratos opacos: de 1.980 millones en 2022 a <strong>6.092 millones de euros</strong> en 2023. En 2025, la cifra batió todos los récords: <strong>23.343 millones de euros</strong> adjudicados directamente a empresas elegidas sin publicidad. Un aumento del 650% respecto al año anterior. En cinco años, el Gobierno ha adjudicado más de <strong>36.700 millones de euros</strong> sin competencia abierta.</p>
     </div>
@@ -1497,11 +1589,13 @@ strong{color:#111111;font-weight:700}
       <p>"El procedimiento negociado sin publicidad solo está previsto para casos excepcionales. La consecuencia más evidente de su abuso es un mayor coste para la Administración y la puerta abierta al clientelismo."</p>
       <cite>— The Objective, análisis de datos OIReScon · Marzo 2025</cite>
     </div>
+    </div>
   </section>
 
   <!-- XV. ELECCIONES 29-N -->
   <section id="elecciones29n" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-elecciones29n">
+      <div class="section-header">
       <div class="section-num">XV</div>
       <div class="section-title-wrap">
         <span class="section-tag">29 de noviembre de 2026 · Elecciones Generales Anticipadas</span>
@@ -1509,8 +1603,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">Resultados de las elecciones generales del 29 de noviembre de 2026: PP 31%, PSOE 27,3%, Vox 18,9%.</div>
+    </button>
+    <div class="acc-body" id="body-elecciones29n">
+      <div class="two-col fade-in">
       <p>El presidente Sánchez convocó elecciones generales anticipadas para el <strong>29 de noviembre de 2026</strong>, adelantando el fin de legislatura en un contexto marcado por las dos catástrofes ferroviarias, las sentencias del caso Koldo-Ábalos y el desgaste acumulado de ocho años de gobierno. Fue la primera vez que un gobierno de coalición de izquierdas completaba una legislatura completa en España desde la II República.</p>
       <p>Los resultados consolidaron el giro del electorado: el <strong>Partido Popular obtuvo el 31%</strong> de los votos, seguido del <strong>PSOE con el 27,3%</strong>. Vox alcanzó el <strong>18,9%</strong> y el Frente Amplio (la nueva coalición de izquierdas) se quedó en el <strong>6,3%</strong>. La fragmentación del voto de izquierda —acelerada por la crisis de Sumar y la debilidad de Podemos— dejó al PSOE sin socios suficientes para repetir gobierno.</p>
     </div>
@@ -1550,11 +1646,13 @@ strong{color:#111111;font-weight:700}
       <p>"Ocho años de gobierno. Dos tragedias ferroviarias. Una condena histórica a un exministro. Los ciudadanos emitieron su juicio el 29 de noviembre."</p>
       <cite>— El Registro Sánchez · Noviembre 2026</cite>
     </div>
+    </div>
   </section>
 
   <!-- XVI. ALEGATO FINAL -->
   <section id="veredicto" class="section-block fade-in">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-veredicto">
+      <div class="section-header">
       <div class="section-num">XV</div>
       <div class="section-title-wrap">
         <span class="section-tag">Alegato ciudadano · Sin partido · Sin propaganda</span>
@@ -1562,8 +1660,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="verdict fade-in">
+        <div class="acc-summary">El alegato ciudadano: síntesis del mandato 2018–2026 y llamada a la responsabilidad democrática.</div>
+    </button>
+    <div class="acc-body" id="body-veredicto">
+      <div class="verdict fade-in">
       <div class="verdict-label">Síntesis del Mandato · 2018–2026</div>
       <p class="verdict-text">Ocho años de gobierno han producido: corrupción que alcanza al círculo familiar del presidente —con un exministro condenado a 24 años por sentencia firme del Supremo—, la quiebra sistemática de promesas explícitas, el mayor expolio fiscal sin debate parlamentario de la democracia, estadísticas de empleo construidas sobre una ficción contractual, el apagón más grave de Europa en 20 años, 46 muertos en Adamuz y 69 muertos en Urda —dos catástrofes ferroviarias en nueve meses bajo el mismo ministro—, la desmembración institucional de España a cambio de votos independentistas, la Guardia Civil desarmada mientras el narco campea por el Estrecho y el Guadalquivir, la política exterior subordinada a los intereses de Marruecos, el mercado de la vivienda destruido con intervencionismo ideológico, 36.700 millones adjudicados a dedo en cinco años, y una regularización masiva aprobada por decreto. El 29 de noviembre de 2026, los ciudadanos dictaron sentencia: el PP ganó las elecciones anticipadas con el 31% frente al 27,3% del PSOE.</p>
     </div>
@@ -1630,15 +1730,15 @@ strong{color:#111111;font-weight:700}
         <p class="timeline-body">El segundo accidente ferroviario más grave del siglo XXI. Y la regularización de hasta 3 millones de personas para reconfigurar el censo electoral de las próximas décadas.</p>
       </div>
     </div>
-
+    </div>
   </section>
 
 </div><!-- /page-wrapper -->
 
 <!-- FUENTES -->
 <section id="fuentes" class="section-block fade-in">
-  <div class="page-wrapper">
-    <div class="section-header">
+    <button class="acc-trigger" aria-expanded="false" aria-controls="body-fuentes">
+      <div class="section-header">
       <div class="section-num">—</div>
       <div class="section-title-wrap">
         <span class="section-tag">Transparencia · Metodología</span>
@@ -1646,8 +1746,10 @@ strong{color:#111111;font-weight:700}
         <div class="section-rule"></div>
       </div>
     </div>
-
-    <div class="two-col fade-in">
+        <div class="acc-summary">Fuentes documentales y verificación: medios, organismos oficiales e informes judiciales utilizados en este archivo.</div>
+    </button>
+    <div class="acc-body" id="body-fuentes">
+      <div class="two-col fade-in">
       <p>Este archivo recoge exclusivamente hechos verificados mediante fuentes primarias o publicaciones de referencia. No se incluyen rumores, filtraciones no confirmadas ni especulaciones. Cada sección indica sus fuentes principales.</p>
       <p>Todos los investigados gozan de plena presunción de inocencia. La mención de procedimientos judiciales refleja su existencia pública, no un juicio de culpabilidad. Solo las sentencias firmes constituyen condenas.</p>
 
@@ -1672,7 +1774,8 @@ strong{color:#111111;font-weight:700}
       </div>
     </div>
   </div>
-</section>
+    </div>
+  </section>
 
 <!-- FOOTER -->
 <footer>
@@ -1733,6 +1836,52 @@ strong{color:#111111;font-weight:700}
     };
     requestAnimationFrame(step);
   }
+
+  // ACORDEÓN — inyectar flecha en cada botón
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    const arrow = document.createElement('span');
+    arrow.className = 'acc-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '›';
+    btn.appendChild(arrow);
+  });
+
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const bodyId = btn.getAttribute('aria-controls');
+      const body = document.getElementById(bodyId);
+      if (!body) return;
+
+      if (expanded) {
+        // Cerrar
+        btn.setAttribute('aria-expanded', 'false');
+        body.classList.remove('open');
+      } else {
+        // Abrir
+        btn.setAttribute('aria-expanded', 'true');
+        body.classList.add('open');
+        // Disparar animaciones internas
+        body.querySelectorAll('.fade-in').forEach(el => {
+          el.classList.add('visible');
+        });
+        // Scroll suave al titular
+        setTimeout(() => {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    });
+  });
+
+  // Abrir la sección si se llega por ancla (#id)
+  function openFromHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const btn = document.querySelector(`.acc-trigger[aria-controls="body-${hash}"]`);
+    if (btn && btn.getAttribute('aria-expanded') === 'false') btn.click();
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
 </script>
 
 </body>
